@@ -46,30 +46,7 @@ return async(dispatch)=>{
  
 }
 
-export const authenticate = (token,navigate)=>{
-   return async(dispatch)=>{
 
- try{
-    const response = await apiConnector("GET",AUTHH,null, {
-        "Content-type": "application/json; charset=UTF-8",
-        "Authorization" : `Bearer ${token}`
-    })
-  
-if(response.status == 200)
-{
-    dispatch(login(true))
-    navigate("/homescreen")
-}
-  
- } catch (err){
-    console.log(err);
-    console.log("Error Authenticating user");
-    toast.error("Error authenticating user");
- }
-   }
-
-
-}
 
 export const signUp = (data,navigate)=>{
    
