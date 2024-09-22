@@ -12,9 +12,12 @@ export const getTodo = ()=>{
             const toastId = toast.loading("Getting Todos")
             const response = await apiConnector("GET",GETTODO);
 
-       await dispatch(fetchTodos(response.data.data))
+      if(response.status==200)
+      {
+         dispatch(fetchTodos(response.data.data))
      
-            toast.dismiss(toastId);
+        toast.dismiss(toastId);
+      }
            
          return response.data.data
         }

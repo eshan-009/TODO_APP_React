@@ -20,10 +20,12 @@ const Card = ({data}) => {
 
  
    }
-   async function DeleteHandler(e,id){
+    async function DeleteHandler(e,id){
     e.preventDefault()
-   await dispatch(deleteTodo(id))
-   await navigate(location.pathname)
+
+     dispatch(deleteTodo(id,navigate))
+    
+    console.log("Navigate")
  
    }
   async function CompletedHandler(e,id){

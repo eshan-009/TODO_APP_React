@@ -1,11 +1,12 @@
 import toast from "react-hot-toast";
 import { apiConnector } from "../apiconnector";
 import { todoEndPoints } from "../apis";
+import { updateTodostatusRedux } from "../../redux/slices/todoSlice";
 
 const {UPDATESTATUS} = todoEndPoints;
 
 export const updateTodoStatus = (id,navigate)=>{
-    return async() => {
+    return async(dispatch) => {
         try{
             const token = localStorage.getItem("token")
         const response = await apiConnector("PATCH",`${UPDATESTATUS}/${id}`,{
@@ -17,6 +18,7 @@ export const updateTodoStatus = (id,navigate)=>{
         if(response.status==200)
         {
             toast.success("Todo status updated successfully")
+            dispatch(updateTodostatusRedux(id))
         }
         else
         {
