@@ -11,7 +11,7 @@ const SignUpPage = () => {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors ,isValid },
         watch,
       } = useForm();
 
@@ -53,7 +53,7 @@ const SignUpPage = () => {
 
       <button 
     className='w-2/3 h-16 text-xl bg-yellow-300 rounded-lg'
-  
+    disabled = {!isValid}
     >SignUp</button>
       </form>
     

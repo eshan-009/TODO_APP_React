@@ -13,13 +13,16 @@ import { getTodo } from './services/operations/todos'
 import { useEffect } from 'react'
 import AddTodo from './Pages/AddTodo'
 import SignUpPage from './Pages/SignUpPage'
+import Loader from './components/Loader'
 function App() {
 const isLoggedIn = useSelector((state)=>state.Login.value)
 
-
+const loaderStatus = useSelector((state)=>state.loader)
   return (
    <>
-  
+ {
+   loaderStatus && <Loader/>
+ }
    <Routes>
   
    <Route path='/'  element={<LoginPage></LoginPage>}></Route>

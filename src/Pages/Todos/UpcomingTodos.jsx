@@ -6,6 +6,7 @@ const UpcomingTodos = () => {
 
   const data = useSelector((state)=>state.Todos);
   const upcomingData = data.filter((item) => new Date(item.dueDate) > new Date());
+
   return (
     <div className='w-svw h-full  flex flex-wrap justify-center items-center gap-3'>
      {

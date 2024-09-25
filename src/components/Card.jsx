@@ -15,8 +15,8 @@ const Card = ({data}) => {
 
    async function EditHandler(e,id,title,description,dueDate){
     e.preventDefault()
-    await dispatch(setId({id,title,description,dueDate}))
-    await navigate("/homescreen/editTodo")
+     dispatch(setId({id,title,description,dueDate}))
+     navigate("/homescreen/editTodo")
 
  
    }
@@ -25,7 +25,7 @@ const Card = ({data}) => {
 
      dispatch(deleteTodo(id,navigate))
     
-    console.log("Navigate")
+  
  
    }
   async function CompletedHandler(e,id){

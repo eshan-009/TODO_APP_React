@@ -8,10 +8,10 @@ export const todoSlice = createSlice({
     initialState : [],
     reducers : {
         fetchTodos : (state,action)=>{
+         
           return action.payload
         },
         addTodo : (state,action)=>{
-      
           state.push(action.payload);
         },
         deleteTodoRedux : (state,action)=>{
@@ -24,7 +24,7 @@ export const todoSlice = createSlice({
          }
         },
         editTodoRedux: (state,action)=>{
-       
+          const found = state.find((item)=>item._id===action.payload.id)
          if(found)
          {
           const index = state.indexOf(found);

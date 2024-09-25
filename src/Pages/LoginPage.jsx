@@ -1,9 +1,10 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { Login } from '../services/operations/auth';
 import { useNavigate } from 'react-router-dom';
+import { setLoader } from '../redux/slices/loader';
 const LoginPage = () => {
 const[input,setInput] =useState({email:"",password:""})
 
@@ -19,10 +20,23 @@ function handleOnchange(e){
 
     ))
 }
+
 function submitHandler(e){
     e.preventDefault()
-    dispatch(Login(input.email,input.password,navigate))
+  
+    dispatch(Login(input.email,input.password,navigate,setLoader));
+    
 }
+
+function isValid(){
+  
+  if(input.email !== '' && input.password !== '')
+  {
+    return true
+  }
+return false
+}
+
   return (
 <div className='w-svw h-svh flex flex-col justify-start items-center gap-20'>
 <p className='text-5xl mt-28'>Login Page</p>
@@ -50,7 +64,7 @@ function submitHandler(e){
 
     <button 
     className='w-2/3 h-16 text-xl bg-yellow-300 rounded-lg'
-  
+    disabled={!isValid()}
     >Login</button>
 </form>
 

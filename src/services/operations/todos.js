@@ -17,9 +17,10 @@ export const getTodo = ()=>{
                 "Authorization" : `Bearer ${token}`
             });
 
-            console.log(response.data)
+          
       if(response.status==200)
       {
+        
          dispatch(fetchTodos(response.data.data))
      
        

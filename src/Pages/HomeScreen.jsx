@@ -27,9 +27,6 @@ function logoutHandler(){
   navigate("/", { replace: true });
 }
 
-
-
-
   return (
     <div className='flex flex-col items-center mt-9 font-geostatic'>
       <h1 className='text-3xl font-bold'>My Tasks</h1>
@@ -37,7 +34,7 @@ function logoutHandler(){
      <Link to={`/homescreen` }  className={`${location.pathname===`/homescreen` ? " font-bold scale-150 text-[#2F1847]": ""}`}>Today</Link>
      <Link to={`/homescreen/upcoming`} className={`${location.pathname===`/homescreen/upcoming` ? "font-bold scale-150 text-[#2F1847]": ""}`}>Upcoming</Link>
      <Link to={`/homescreen/completed`} className={`${location.pathname===`/homescreen/completed` ? "font-bold scale-150 text-[#2F1847]": ""}`}>Completed</Link>
-     <Link to={`/homescreen/pending`} className={`${location.pathname === `/homescreen/pending` ? "font-bold scale-150 text-[#2F1847]": ""}`}>Pending</Link>
+     <Link to={{ pathname: '/homescreen/pending', state: { reload: Date.now() } }} className={`${location.pathname === `/homescreen/pending` ? "font-bold scale-150 text-[#2F1847]": ""}`}>Pending</Link>
       </ul>
 {
   
